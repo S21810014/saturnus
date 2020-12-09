@@ -1,12 +1,23 @@
 import React from 'react'
-import {Button} from '@material-ui/core'
+import {Typography} from '@material-ui/core'
+import Card from './Card.js'
 
-const Main = () => {
-    return (
-        <div>
-            <Button variant="contained" color="primary">tes</Button>
-        </div>
-    )
+const Main = ({imageApi, isLoading}) => {
+    if(isLoading) {
+        return (
+            <Typography>Loading...</Typography>
+        )
+    } else {
+        return (
+            <div>
+                {
+                    imageApi.map((el) =>
+                        <Card key={el.id} imgTitle={el.author} img={{id: el.id, w: el.width, h: el.height}}/>
+                    )
+                }
+            </div>
+        )
+    }
 }
 
 export default Main

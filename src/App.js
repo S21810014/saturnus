@@ -21,7 +21,7 @@ function App() {
 
         <Switch>
           <Route path="/">
-            <Main/>
+            <Main imageApi={imageApi} isLoading={isLoading}/>
           </Route>
         </Switch>
       </div>
