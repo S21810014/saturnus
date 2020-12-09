@@ -16,7 +16,7 @@ function App() {
 
   return (
     <Router>
-      <div style={{width: "100%", height: window.innerHeight}}>
+      <div style={{width: "100%"}}>
         <NavBar/>
 
         <Switch>

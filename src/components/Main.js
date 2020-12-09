@@ -9,7 +9,7 @@ const Main = ({imageApi, isLoading}) => {
         )
     } else {
         return (
-            <div>
+            <div style={{height: '100%'}}>
                 {
                     imageApi.map((el) =>
                         <Card key={el.id} imgTitle={el.author} img={{id: el.id, w: el.width, h: el.height}}/>
