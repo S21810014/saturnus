@@ -42,7 +42,6 @@ const NavBar = () => {
                     </Toolbar>
                 </AppBar>
             </HideOnScroll>
-            <Toolbar/>
         </React.Fragment>
     )
 }
