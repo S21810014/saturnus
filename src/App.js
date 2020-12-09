@@ -8,7 +8,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    fetch("https://picsum.photos/v2/list").then(resp => resp.json()).then(data => {
+    fetch("https://api.unklab.fun/latest/1/").then(resp => resp.json()).then(data => {
       setImageApi(data)
       setIsLoading(false)
     })

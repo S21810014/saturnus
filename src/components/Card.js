@@ -1,5 +1,5 @@
 import { Card, CardActionArea, CardContent, CardMedia, makeStyles, Typography } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -7,20 +7,12 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const MyCard = ({img, imgTitle}) => {
-    const [imageData, setImageData] = useState('')
+const MyCard = ({img, imgTitle, hasMedia}) => {
     const classes = useStyles()
-
-    useEffect(() => {
-        setImageData(`https://picsum.photos/id/${img.id}/${parseInt(img.w/img.h * window.innerHeight)}/${parseInt(img.h/img.w * window.innerWidth)}`)
-    }, [])
-
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                {
-                    imageData.length < 1 ? null : <CardMedia image={imageData} style={{height: img.h/img.w * window.innerWidth}}/>
-                }
+                {hasMedia ? <CardMedia component="img" image={img}/> : null}
                 <CardContent>
                     <Typography variant="body2">
                         {imgTitle}
