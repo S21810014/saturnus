@@ -4,15 +4,6 @@ import Main from './components/Main.js'
 import NavBar from './components/NavBar.js'
 
 function App() {
-  const [imageApi, setImageApi] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    fetch("https://api.unklab.fun/latest/1/").then(resp => resp.json()).then(data => {
-      setImageApi(data)
-      setIsLoading(false)
-    })
-  }, [])
 
   return (
     <Router>
@@ -21,7 +12,7 @@ function App() {
 
         <Switch>
           <Route path="/">
-            <Main imageApi={imageApi} isLoading={isLoading}/>
+            <Main/>
           </Route>
         </Switch>
       </div>
