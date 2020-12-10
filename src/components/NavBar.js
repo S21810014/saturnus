@@ -1,6 +1,7 @@
 import { AppBar, Button, IconButton, makeStyles, Toolbar, Typography, Slide, useScrollTrigger } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     menuButton: {
@@ -24,7 +25,8 @@ const HideOnScroll = (props) => {
 
 const NavBar = () => {
     const classes = useStyles()
-
+    let history = useHistory()
+    
     return (
         <React.Fragment>
             <HideOnScroll>
@@ -33,7 +35,7 @@ const NavBar = () => {
                         <IconButton edge='start' className={classes.menuButton}>
                             <MenuIcon/>
                         </IconButton>
-                        <Typography variant='h6' className={classes.title}>
+                        <Typography variant='h6' className={classes.title} onClick={() => history.push('/')}>
                             Unklab.fun
                         </Typography>
                         <Button color='inherit'>
