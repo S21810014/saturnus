@@ -15,6 +15,8 @@ const PostDetail = () => {
             .then(data => {
                 setDetailData(data.data)
             })
+
+            document.title = `Unklab.fun - ${postId}`
     }, [postId])
 
     const formatDate = (dateStr) => {

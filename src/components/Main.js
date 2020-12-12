@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import {Typography} from '@material-ui/core'
 import Card from './Card.js'
 import {GridLayout} from '@egjs/react-infinitegrid'
@@ -10,6 +10,10 @@ const Main = ({layoutState, setLayoutState, imageApi, fetchImages}) => {
         setLayoutState({status: gridLayout.current.getStatus(), element: gridLayout.current.getElements(), groupKey, idx})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        document.title = "Unklab.fun - Home"
     }, [])
 
     return (

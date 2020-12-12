@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     fetchImages(() => console.log("firstFetch"))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    alert(window.innerWidth)
+    document.title = "Unklab.fun"
   }, [])
 
   return (
