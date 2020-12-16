@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useRef } from 'react'
-import {Typography} from '@material-ui/core'
+import {Typography, useTheme} from '@material-ui/core'
 import Card from './Card.js'
 import {GridLayout} from '@egjs/react-infinitegrid'
 
 const Main = ({layoutState, setLayoutState, imageApi, fetchImages}) => {
     const gridLayout = useRef()
+    const theme = useTheme()
 
     const saveScrollPosition = useCallback((groupKey, idx) => {
         setLayoutState({status: gridLayout.current.getStatus(), element: gridLayout.current.getElements(), groupKey, idx})
@@ -14,13 +15,13 @@ const Main = ({layoutState, setLayoutState, imageApi, fetchImages}) => {
 
     useEffect(() => {
         document.title = "Unklab.fun - Home"
-    }, [])
+    }, [])  
 
     return (
-        <div>
+        <div style={{backgroundColor: theme.palette.background.default, paddingTop:'5rem'}}>
             <GridLayout
                 ref={gridLayout}
-                style={{width: "100%", marginTop:'5rem'}}
+                style={{width: "100%"}}
                 loading={
                     <div style={{
                         height: '5rem',

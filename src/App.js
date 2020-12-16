@@ -1,12 +1,24 @@
+import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Main from './components/Main.js'
 import NavBar from './components/NavBar.js'
 import PostDetails from './components/PostDetail'
+import Drawer from './components/MyDrawer'
+//import * as color from 'color'
 
 function App() {
   const [layoutState, setLayoutState] = useState(null)
   const [imageApi, setImageApi] = useState(null)
+  const [drawerState, setDrawerState] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
+
+  const theme = createMuiTheme({
+    palette: {
+      type: darkMode ? 'dark' : 'light',
+    },
+  })
+  
 
   const fetchImages = (endLayoutCallback) => {
       if(imageApi === null) {
@@ -38,30 +50,36 @@ function App() {
 
   useEffect(() => {
     fetchImages(() => console.log("firstFetch"))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     document.title = "Unklab.fun"
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <Router>
-      <div style={{width: "100%"}}>
-        <NavBar/>
 
-        <Switch>
-          <Route exact path="/">
-            {imageApi !== null ? 
-              <Main 
-                layoutState={layoutState} 
-                setLayoutState={setLayoutState} 
-                imageApi={imageApi}
-                fetchImages={fetchImages}
-              /> : <div> Getting posts... </div>}
-          </Route>
-          <Route exact path="/post/:postId">
-            <PostDetails/>
-          </Route>
-        </Switch>
-      </div>
+
+      <ThemeProvider theme={theme}>
+          <Drawer drawerState={drawerState} setDrawerState={setDrawerState} setDarkMode={setDarkMode} darkMode={darkMode}/>
+          <NavBar setDrawerState={setDrawerState}/>
+
+          <Switch>
+            <Route exact path="/">
+              {imageApi !== null ? 
+                <Main 
+                  layoutState={layoutState} 
+                  setLayoutState={setLayoutState} 
+                  imageApi={imageApi}
+                  fetchImages={fetchImages}
+                /> : <div> Getting posts... </div>}
+            </Route>
+            <Route exact path="/post/:postId">
+              <PostDetails/>
+            </Route>
+          </Switch>
+
+      </ThemeProvider>
+
+
     </Router>
   );
 }

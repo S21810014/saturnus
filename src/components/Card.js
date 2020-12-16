@@ -1,9 +1,9 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography, Zoom } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 const MyCard = ({img, imgTitle, hasMedia, postId, saveScrollPosition, groupKey, idx}) => {
-    const [imgState, setImgState] = useState(false)
+    //const [imgState, setImgState] = useState(false)
     let history = useHistory()
 
     // useEffect(() => {
@@ -19,7 +19,7 @@ const MyCard = ({img, imgTitle, hasMedia, postId, saveScrollPosition, groupKey, 
 
     return (
         <div style={{width: '90%'}}>
-            {/* <Zoom in={true} timeout={400} style={{transitionDelay: '500ms'}}> */}
+            <Zoom in={true} timeout={400} style={{transitionDelay: '500ms'}}>
                 <Card>
                     <CardActionArea onClick={() => {
                             saveScrollPosition(groupKey, idx % 12)
@@ -37,7 +37,7 @@ const MyCard = ({img, imgTitle, hasMedia, postId, saveScrollPosition, groupKey, 
                         </CardContent> : null}
                     </CardActionArea>
                 </Card>
-            {/* </Zoom> */}
+            </Zoom>
         </div>
     )
 }
